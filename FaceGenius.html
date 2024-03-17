@@ -1,0 +1,159 @@
+<!doctype html>
+<title>FaceGenius:基于人脸识别的智慧课堂管理系统</title>
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<body style="font-family: Open Sans, sans-serif">
+    <section class="px-6 py-8">
+        <nav class="md:flex md:justify-between md:items-center">
+            <div>
+                <a href="./index.html">    
+                    <img src="./images/logo.svg" alt="Laracasts Logo" width="64" height="64">
+                </a>
+            </div>
+
+            <div class="mt-8 md:mt-0">
+                <a href="./index.html" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-6">返回</a>
+            </div>
+        </nav>
+
+        <main class="max-w-6xl mx-auto mt-10 lg:mt-20 space-y-6">
+            <article class="max-w-4xl mx-auto lg:grid lg:grid-cols-12 gap-x-10">
+                <div class="col-span-4 lg:text-center lg:pt-14 mb-10">
+                    <img src="./images/illustration-1.png" alt="" class="rounded-xl">
+
+                    <p class="mt-4 block text-gray-400 text-xs">
+                        更新于 <time>2024.3.8</time>
+                    </p>
+
+                    <div class="flex items-center lg:justify-center text-sm mt-4">
+                        <img src="./images/lary-avatar.svg" alt="Lary avatar">
+                        <div class="ml-3 text-left">
+                            <h5 class="font-bold">Ctx</h5>
+                            <h6>一个编程蒟蒻</h6>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-span-8">
+                    <div class="hidden lg:flex justify-between mb-6">
+                        <a href="./index.html"
+                            class="transition-colors duration-300 relative inline-flex items-center text-lg hover:text-blue-500">
+                            <svg width="22" height="22" viewBox="0 0 22 22" class="mr-2">
+                                <g fill="none" fill-rule="evenodd">
+                                    <path stroke="#000" stroke-opacity=".012" stroke-width=".5" d="M21 1v20.16H.84V1z">
+                                    </path>
+                                    <path class="fill-current"
+                                        d="M13.854 7.224l-3.847 3.856 3.847 3.856-1.184 1.184-5.04-5.04 5.04-5.04z">
+                                    </path>
+                                </g>
+                            </svg>
+                            Ctx's Blog
+                        </a>
+
+                        <div class="space-x-2">
+                            <a href="#"
+                                class="px-3 py-1 border border-blue-300 rounded-full text-blue-300 text-xs uppercase font-semibold"
+                                style="font-size: 10px">项目展示</a>
+                            <a href="#"
+                                class="px-3 py-1 border border-red-300 rounded-full text-red-300 text-xs uppercase font-semibold"
+                                style="font-size: 10px">创客</a>
+                        </div>
+                    </div>
+
+                    <h1 class="font-bold text-3xl lg:text-4xl mb-10">
+                        FaceGenius:基于人脸识别的智慧课堂管理系统
+                    </h1>
+
+                    <div class="space-y-4 lg:text-lg leading-loose">
+                        <h2 class="font-bold text-lg">写在前面的话</h2>
+                        <p>本篇博文的主角——FaceGenius，这应该是我人生中第一个比较正式且完成度较高的创客作品🎉</p>
+                        <p>我也将这个项目的所有代码开源放在了Gitee上: https://gitee.com/chengtx007/FaceGenius
+                        <p>作为我人生中第一个正式完成的创客作品，代码冗余且只是勉强能跑（哭</p>
+                        <p>我也将完整的项目论文放在了Readme里，感兴趣的可以前往查看（真的会有人看嘛？</p>
+                        <h2 class="font-bold text-lg">摘要</h2>
+                        <p>本项目主要设计了一种基于人脸识别的智慧课堂管理系统，该系统采用模块化设计，通过使用TinyWebDB数据库存储数据、cnn、cocoapp框架构建前端界面，并利用Opencv和face_recognition模型构建了后台。使其能够实现课堂人数的自动统计、学生的实时监控、课堂名单的自动生成以及随机抽签等功能。</p>
+                        <p>关键词：人脸识别，智慧课堂，管理系统</p>
+                        <h2 class="font-bold text-lg">一、绪论</h2>
+                        <h2 class="font-bold text-lg">背景、意义与目的</h2>
+                        <p>随着人工智能技术的发展，人脸识别技术已经被广泛应用于各个领域。在教育领域，人脸识别技术也被应用于课堂管理中。目前，国内外已经有一些基于人脸识别的课堂管理系统，还有一些研究团队尝试将人脸识别技术应用于课堂行为分析中，以实现对学生课堂行为的自动评估。但是，这些系统通常只实现了部分功能，且性能不够稳定。未来的发展趋势是结合人工智能技术和大数据技术，实现更加智能化和个性化的课堂管理。</p>
+                        <h2 class="font-bold text-lg">主要研究内容</h2>
+                        <p>主要研究内容是融合现有的信息化手段，设计并实现一种基于人脸识别的智慧课堂管理系统。其功能包括：</p>
+                        <p>（1）课堂人数的自动统计；</p>
+                        <p>（2）学生的实时监控；</p>
+                        <p>（3）课堂名单的自动生成；</p>
+                        <p>（4）随机抽签。</p>
+                        <h2 class="font-bold text-lg">二、方案选型与需求分析过程</h2>
+                        <h2 class="font-bold text-lg">系统的方案设计与选型</h2>
+                        <p>在最开始，我需要确定我的具体需求和功能，再根据功能确定技术难点和要点，根据技术来寻找各类方案，最终选择最适合的方案。我通过调查研究和分析，我确定了以下需求：</p>
+                        <img src="./images/FaceGenius/1.png" alt="img-1">
+                        <p>在经过讨论之后，确定了一下具体技术要求：</p>
+                        <img src="./images/FaceGenius/2.png" alt="img-2">
+                        <h2 class="font-bold text-lg">人脸识别技术的选型</h2>
+                        <p>人脸识别有多种技术可以使用，经过资料搜索，我找到了以下几种方式：</p>
+                        <p>（1）利用百度api接口进行识别</p>
+                        <p>（2）自己写一个CNN神经网络</p>
+                        <p>（3）使用opencv2自带的face_recognition模型</p>
+                        <p>经过探索之后，决定采用第三种方式，简单直接高效。</p>
+                        <img src="./images/FaceGenius/3.png" alt="img-3">
+                        <h2 class="font-blod text-lg">数据存储技术的选型</h2>
+                        <p>数据库的选型同样有很多种，我探索了以下几种方案：</p>
+                        <p>（1）编程猫自带的db</p>
+                        <p>（2）谷歌推出的TinyWebDB</p>
+                        <p>（3）Json文件存储</p>
+                        <p>（4）传统sql数据库</p>
+                        <p>其中第一种限制过多，第三种则只能存放在本地，第四种难度较高，因此，在本项目中我选择第三种——TinyWebDB作为数据存储的方式。</p>
+                        <img src="./images/FaceGenius/4.png" alt="img-4">
+                        <h2 class="font-bold text-lg">客户端框架的选型</h2>
+                        <p>客户端的呈现有多种方式，如H5、APP、PC软件等，实现方式也多种多样，在与指导老师讨论之后，我决定采用coco推出的app制作方式，这种制作出来的客户端美观，制作过程也相对简单。</p>
+                        <img src="./images/FaceGenius/5.png" alt="img-5">
+                        <h2 class="font-bold text-lg">后台框架的选型</h2>
+                        <p>在后台框架方面，因为我选择了python版本的opencv2，因此也采用了python语言作为后台的编程，因为业务较为简单，因此直接使用requests来与数据库和客户端通讯。</p>
+                        <img src="./images/FaceGenius/6.png" alt="img-6">
+                        <h2 class="font-bold text-lg">三、系统总体设计</h2>
+                        <p>智慧课堂管理系统采用基于人脸识别的方案，通过摄像头捕捉人脸图像，使用人脸识别算法进行比对和分析，实现课堂人数的自动统计、学生的实时监控、课堂名单的自动生成以及随机抽签等功能，整体程序设计框架如下图：</p>
+                        <img src="./images/FaceGenius/7.png" alt="img-7">
+                        <h2 class="font-bold text-lg">人脸识别模块</h2>
+                        <p>人脸识别技术是一种基于人脸图像的身份识别技术，通过对人脸图像的比对和分析，实现对人脸的识别。在智慧课堂管理系统中，我使用人脸识别技术来实现课堂人数的自动统计和学生的实时监控。采用OpenCV库和face_recognition库来实现人脸识别功能。具体实现过程如下：</p>
+                        <p>（1）首先读取摄像头数据；</p>
+                        <p>（2）使用Opencv2配合face_recognitio对人脸检测图像进行人脸检测，获取人脸的位置和大小；</p>
+                        <p>（3）之后对检测到的人脸进行比对和分析，判断人脸的身份。</p>
+                        <img src="./images/FaceGenius/8.png" alt="img-8">
+                        <h2 class="font-bold text-lg">课堂人数统计模块</h2>
+                        <p>利用人脸识别模块进一步扩展，我构建了课堂人数统计模块，其包括以下功能：</p>
+                        <p>（1）检测进入和离开教室的人数；</p>
+                        <p>（2）实时更新教室内的人数</p>
+                        <p>（3）能够将人数统计数据存储在数据库中；</p>
+                        <p>（4）提供人数统计结果。</p>
+                        <img src="./images/FaceGenius/9.png" alt="img-9">
+                        <img src="./images/FaceGenius/10.png" alt="img-10">
+                        <h2 class="font-bold text-lg">实时监控模块的设计</h2>
+                        <p>我利用“轻松传”网页的H5的方式来设计该模块，通过在H5显示视频，然后利用客户端调用该H5页面，这有一些取巧，但是效果并不差。</p>
+                        <img src="./images/FaceGenius/11.png" alt="img-11">
+                        <h2 class="font-bold text-lg">随机抽签模块</h2>
+                        <p>另外，为了方便对课堂进行扩展，我采用随机数生成算法和名单管理算法来实现随机抽签功能。具体实现过程如下：</p>
+                        <p>（1）获取名单：从现有的已经到达的学生中获取课堂名单；</p>
+                        <p>（2）随机生成一个数字，然后根据随机数选择名单中的学生</p>
+                        <img src="./images/FaceGenius/12.png" alt="img-12"> 
+                        <h2 class="font-bold text-lg">四、总结</h2>
+                        <p>本次我设计并实现了一种基于人脸识别的智慧课堂管理系统，该系统能够实现课堂人数的自动统计、学生的实时监控、课堂名单的自动生成以及随机抽签等功能。经过半年的努力，基本完成功能实现，希望我的研究成果能够为智慧课堂管理提供一定的参考和借鉴。</p>
+                        <h2 class="font-bold text-lg">😉最后恭喜本项目获得 2023年顺德区青少年科技创新大赛发明创造作品一等奖🎉</h2>
+                        <img src="./images/FaceGenius/13.png" alt="img-13">
+                    </div>
+                </div>
+            </article>
+        </main>
+
+        <footer class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
+            <img src="./images/lary-newsletter-icon.svg" alt="" class="mx-auto -mb-6" style="width: 145px;">
+            <h5 class="text-3xl">你似乎来到了这个世界的尽头</h5>
+            <p class="text-sm mt-3">更多内容还在开发中...</p>
+                </div>
+            </div>
+        </footer>
+    </section>
+</body>
